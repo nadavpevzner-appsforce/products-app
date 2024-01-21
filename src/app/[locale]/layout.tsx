@@ -1,5 +1,6 @@
 import { Locale } from '@/i18n.config';
 import type { Metadata } from 'next';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 export const metadata: Metadata = {
   title: "Product's App",
@@ -15,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={locale} dir={locale === 'il' ? 'rtl' : 'ltr'}>
-      <body>{children}</body>
+      <body>
+        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
