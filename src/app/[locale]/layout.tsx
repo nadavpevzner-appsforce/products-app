@@ -1,3 +1,4 @@
+import { Locale } from '@/i18n.config';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,11 +8,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: Locale };
 }>) {
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === 'il' ? 'rtl' : 'ltr'}>
       <body>{children}</body>
     </html>
   );
