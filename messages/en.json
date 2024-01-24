@@ -1,5 +1,16 @@
 {
   "index": {
-    "title": "Hello world!"
+    "header": {
+      "title": "Choose. Fill. Order.",
+      "info": "Choose a service, fill in all the fields and add to the order!"
+    },
+    "body": {
+      "saved": "Saved products",
+      "no-saved": "No saved product",
+      "all": "All products"
+    }
+  },
+  "product": {
+    "min-price": "Start from- "
   }
 }

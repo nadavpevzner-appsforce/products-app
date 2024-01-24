@@ -13,13 +13,19 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@giladappsforce/react-modal-provider": "^1.0.8",
+    "@hookform/resolvers": "^3.3.4",
+    "@mui/icons-material": "^5.15.5",
     "@mui/material": "^5.15.5",
     "@mui/material-nextjs": "^5.15.5",
     "firebase": "^10.7.2",
     "next": "14.1.0",
     "next-intl": "^3.4.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.49.3",
+    "zod": "^3.22.4",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/node": "^20",

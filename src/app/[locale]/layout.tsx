@@ -16,8 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={locale} dir={locale === 'il' ? 'rtl' : 'ltr'}>
-      <body>
+      <body style={{ margin: 0 }}>
+        {/* <ModalProvider> */}
         <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        {/* </ModalProvider> */}
       </body>
     </html>
   );
