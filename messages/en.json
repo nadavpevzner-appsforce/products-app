@@ -7,10 +7,23 @@
     "body": {
       "saved": "Saved products",
       "no-saved": "No saved product",
-      "all": "All products"
+      "all": "All products",
+      "search-placeholder": "Search product..."
     }
   },
   "product": {
-    "min-price": "Start from- "
+    "min-price": "Start from- ",
+    "form": {
+      "description": "Description",
+      "info": "Info",
+      "min-price": "Min price",
+      "save": "Save",
+      "cancel": "Cancel",
+      "errors": {
+        "description": "Description can't be empty",
+        "info": "Info can't be empty",
+        "min-price": "Min Price can't be negative"
+      }
+    }
   }
 }

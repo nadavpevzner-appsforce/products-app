@@ -53,7 +53,7 @@ export const ProductCard = ({
           justifyContent={'space-between'}
           sx={{ cursor: 'pointer' }}
         >
-          <Flex gap={5} onClick={() => openModal('edit', { product, isSaved: !!isSaved })}>
+          <Flex flexGrow={1} gap={5} onClick={() => openModal('edit', { product, isSaved: !!isSaved })}>
             <Image alt="product img" src={product.image} width={50} height={50} priority />
             <Box>
               <Typography fontWeight={'bold'}>{product.name}</Typography>

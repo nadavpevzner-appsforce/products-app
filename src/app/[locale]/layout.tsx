@@ -1,6 +1,7 @@
 import { Locale } from '@/i18n.config';
 import type { Metadata } from 'next';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 export const metadata: Metadata = {
   title: "Product's App",
@@ -14,11 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }>) {
+  const messages = useMessages();
   return (
     <html lang={locale} dir={locale === 'il' ? 'rtl' : 'ltr'}>
       <body style={{ margin: 0 }}>
         {/* <ModalProvider> */}
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        <AppRouterCacheProvider>
+          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        </AppRouterCacheProvider>
         {/* </ModalProvider> */}
       </body>
     </html>

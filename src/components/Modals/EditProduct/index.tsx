@@ -7,6 +7,7 @@ import { useForm, SubmitHandler, FieldErrors, UseFormRegister, Controller } from
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useProductsStore } from '@/zustand';
+import { useTranslations } from 'next-intl';
 
 interface Props extends BaseModalProps {
   product: Product;
@@ -16,12 +17,14 @@ interface Props extends BaseModalProps {
 }
 
 export const EditProductModal = ({ open, onClose, product, isSaved, confirmText, cancelText }: Props) => {
+  const t = useTranslations('product.form');
+
   const editProduct = useProductsStore((state) => state.editProduct);
   const productTypesScheme = z
     .object({
-      info: z.string().min(1, { message: 'Name should have at least 3 characters' }),
-      description: z.string().min(1, { message: 'Name should have at least 3 characters' }),
-      minPrice: z.number().nonnegative('dfns'),
+      info: z.string().min(1, { message: t('errors.info') }),
+      description: z.string().min(1, { message: t('errors.description') }),
+      minPrice: z.number().nonnegative(t('errors.min-price')),
     })
     .required();
 
@@ -51,7 +54,7 @@ export const EditProductModal = ({ open, onClose, product, isSaved, confirmText,
         <form onSubmit={handleSubmit(onSubmit)}>
           <Flex flexDirection={'column'} gap={5}>
             <Flex flexDirection={'column'}>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>{t('description')}</FormLabel>
               <Controller
                 control={control}
                 name="description"
@@ -61,7 +64,7 @@ export const EditProductModal = ({ open, onClose, product, isSaved, confirmText,
               />
             </Flex>
             <Flex flexDirection={'column'}>
-              <FormLabel>Info</FormLabel>
+              <FormLabel>{t('info')}</FormLabel>
               <Controller
                 control={control}
                 name="info"
@@ -71,7 +74,7 @@ export const EditProductModal = ({ open, onClose, product, isSaved, confirmText,
               />
             </Flex>
             <Flex flexDirection={'column'}>
-              <FormLabel>Min Price</FormLabel>
+              <FormLabel>{t('min-price')}</FormLabel>
               <Controller
                 control={control}
                 name="minPrice"
@@ -87,7 +90,7 @@ export const EditProductModal = ({ open, onClose, product, isSaved, confirmText,
               />
             </Flex>
             <Button type="submit" variant="contained">
-              {confirmText || 'Confirm'}
+              {t('save')}
             </Button>
           </Flex>
         </form>
@@ -95,7 +98,7 @@ export const EditProductModal = ({ open, onClose, product, isSaved, confirmText,
       <DialogActions>
         <Flex width="100%" justifyContent={'center'}>
           <Button onClick={onClose} variant="contained" color="secondary">
-            {cancelText || 'Cancel'}
+            {t('cancel')}
           </Button>
         </Flex>
       </DialogActions>

@@ -6,6 +6,8 @@ import { Product } from '@/models';
 import { Typography } from '@mui/material';
 import { useProductsStore } from '@/zustand';
 import { ModalProvider } from '@/components';
+import { useTranslations } from 'next-intl';
+import { useMediaQuery } from '@/hooks';
 
 const ProductList = ({
   products,
@@ -18,6 +20,10 @@ const ProductList = ({
   title: string;
   isSaved: boolean;
 }) => {
+  const { mobile } = useMediaQuery();
+
+  const t = useTranslations('index.body');
+
   const [filter, setFilter] = useState<string>('');
 
   return (
@@ -25,8 +31,8 @@ const ProductList = ({
       <Typography fontWeight={'bold'}>{title}</Typography>
       <TextField
         type="text"
-        sx={{ width: '20%' }}
-        placeholder="חפש"
+        sx={{ width: mobile ? '100%' : '20%' }}
+        placeholder={t('search-placeholder')}
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
